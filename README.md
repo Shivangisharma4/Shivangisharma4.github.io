@@ -4,5 +4,3 @@ I code, I read and write, sometimes i end up watching videos on building a custo
 
 im a ug'27 student
 
-shsbskama ahuakans
-
