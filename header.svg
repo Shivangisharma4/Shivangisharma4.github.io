@@ -1,0 +1,156 @@
+<svg width="850" height="260" viewBox="0 0 850 260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="centerGlow" cx="50%" cy="45%" r="50%">
+      <stop offset="0%" stop-color="#18181b" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#09090b" stop-opacity="1"/>
+    </radialGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <circle cx="16" cy="16" r="0.5" fill="#27272a"/>
+    </pattern>
+    <filter id="textGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur"/>
+      <feComponentTransfer in="blur" result="dimBlur">
+        <feFuncA type="linear" slope="0.15"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode in="dimBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <linearGradient id="nameGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fafafa"/>
+      <stop offset="100%" stop-color="#a1a1aa"/>
+    </linearGradient>
+    <linearGradient id="borderFade" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3f3f46"/>
+      <stop offset="50%" stop-color="#27272a"/>
+      <stop offset="100%" stop-color="#3f3f46"/>
+    </linearGradient>
+  </defs>
+
+  <style>
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes subtlePulse {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 0.7; }
+    }
+    @keyframes cursorBlink {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
+    @keyframes borderGlow {
+      0%, 100% { stroke-opacity: 0.3; }
+      50% { stroke-opacity: 0.6; }
+    }
+    .name {
+      font-family: ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+      font-size: 44px;
+      font-weight: 800;
+      fill: url(#nameGrad);
+      letter-spacing: -1.5px;
+      filter: url(#textGlow);
+      opacity: 0;
+      animation: fadeUp 0.6s ease-out 0.3s forwards;
+    }
+    .mono {
+      font-family: ui-monospace, 'Cascadia Code', 'Fira Code', 'JetBrains Mono', monospace;
+    }
+    .tagline {
+      font-family: ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      fill: #71717a;
+      opacity: 0;
+      animation: fadeUp 0.6s ease-out 0.6s forwards;
+    }
+    .subtitle {
+      font-size: 12px;
+      fill: #52525b;
+      letter-spacing: 0.5px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease-out 0.5s forwards;
+    }
+    .pill-bg { fill: #18181b; }
+    .pill-border { fill: none; stroke: #27272a; stroke-width: 1; }
+    .pill-text {
+      font-size: 10px;
+      fill: #a1a1aa;
+      letter-spacing: 0.3px;
+    }
+    .pill-group {
+      opacity: 0;
+      animation: fadeUp 0.5s ease-out 0.9s forwards;
+    }
+    .dot {
+      animation: subtlePulse 3s ease-in-out infinite;
+    }
+    .cursor {
+      animation: cursorBlink 1.1s step-end infinite;
+    }
+    .grid-overlay {
+      opacity: 0;
+      animation: fadeIn 1s ease-out 0.1s forwards;
+    }
+  </style>
+
+  <!-- Card -->
+  <rect x="0.5" y="0.5" width="849" height="259" rx="12" fill="#09090b"/>
+  <rect x="0.5" y="0.5" width="849" height="259" rx="12" fill="url(#centerGlow)"/>
+  <rect x="0.5" y="0.5" width="849" height="259" rx="12" fill="url(#grid)" class="grid-overlay"/>
+  <rect x="0.5" y="0.5" width="849" height="259" rx="12" fill="none" stroke="url(#borderFade)" stroke-width="1">
+    <animate attributeName="stroke-opacity" values="0.4;0.7;0.4" dur="6s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- Status dot top-left -->
+  <circle cx="28" cy="24" r="3" fill="#22c55e" class="dot"/>
+  <text x="40" y="28" class="mono subtitle" style="animation-delay:0.2s">available</text>
+
+  <!-- Name -->
+  <text x="425" y="115" text-anchor="middle" class="name">Shivangi Sharma</text>
+
+  <!-- Tagline -->
+  <text x="425" y="150" text-anchor="middle" class="tagline">making beautiful, meaningful things — through code and words</text>
+
+  <!-- Path line -->
+  <g class="pill-group" style="animation-delay:0.7s">
+    <text x="425" y="178" text-anchor="middle" class="mono" style="font-size:12px;fill:#3f3f46">~/dev  ~/writer  ~/oss  ~/poet</text>
+  </g>
+
+  <!-- Bottom pills -->
+  <g class="pill-group">
+    <!-- B.Tech CSE '27 -->
+    <rect x="225" y="200" width="80" height="24" rx="12" class="pill-bg"/>
+    <rect x="225" y="200" width="80" height="24" rx="12" class="pill-border"/>
+    <text x="265" y="216" text-anchor="middle" class="mono pill-text">CSE '27</text>
+
+    <!-- RGPV -->
+    <rect x="315" y="200" width="60" height="24" rx="12" class="pill-bg"/>
+    <rect x="315" y="200" width="60" height="24" rx="12" class="pill-border"/>
+    <text x="345" y="216" text-anchor="middle" class="mono pill-text">RGPV</text>
+
+    <!-- GFG -->
+    <rect x="385" y="200" width="50" height="24" rx="12" class="pill-bg"/>
+    <rect x="385" y="200" width="50" height="24" rx="12" class="pill-border"/>
+    <text x="410" y="216" text-anchor="middle" class="mono pill-text">GFG</text>
+
+    <!-- GSSoC -->
+    <rect x="445" y="200" width="62" height="24" rx="12" class="pill-bg"/>
+    <rect x="445" y="200" width="62" height="24" rx="12" class="pill-border"/>
+    <text x="476" y="216" text-anchor="middle" class="mono pill-text">GSSoC</text>
+
+    <!-- Writer -->
+    <rect x="517" y="200" width="58" height="24" rx="12" class="pill-bg"/>
+    <rect x="517" y="200" width="58" height="24" rx="12" class="pill-border"/>
+    <text x="546" y="216" text-anchor="middle" class="mono pill-text">writer</text>
+  </g>
+
+  <!-- Decorative corner marks -->
+  <line x1="16" y1="244" x2="40" y2="244" stroke="#27272a" stroke-width="0.5" opacity="0.5"/>
+  <line x1="810" y1="244" x2="834" y2="244" stroke="#27272a" stroke-width="0.5" opacity="0.5"/>
+</svg>
